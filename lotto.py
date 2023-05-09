@@ -55,7 +55,7 @@ def predict_lotto_nums():
     recent_num_counts = get_recent_num_counts(win_nums)
 
     # 여기에 제외수 추가해라
-    exp_nums = [1,2,8,16,39,42,44]
+    exp_nums = [2,8,9,11,16,22,35,39,42,44]
     
     # 번호 예측하기
     lotto_nums_set = []
@@ -99,29 +99,29 @@ def predict_lotto_nums():
         
     return lotto_nums_set
 
-# 로또 번호 예측하기
-predicted_nums = predict_lotto_nums()
 
 # 등수 리스트
 rank = [".", "5등", "4등", "3등", "2등", "1등"]
-lucky_number = [3,18,19,23,32,45,24]
+lucky_number = [6,11,16,19,21,32,45]
+while True:
+    a = input()
+    # 로또 번호 예측하기
+    predicted_nums = predict_lotto_nums()
 
-# 결과 출력하기
-print("=== 예측된 로또 번호 ===")
-for nums in predicted_nums:
-    match_count = len(set(nums) & set(lucky_number[:-1]))
-    bonus_match = nums.count(lucky_number[-1])
-    if match_count == 6:
-        print(f"{nums} - {rank[5]}")
-    elif match_count == 5 and bonus_match == 1:
-        print(f"{nums} - {rank[4]}")
-    elif match_count == 5 and bonus_match == 0:
-        print(f"{nums} - {rank[3]}")
-    elif match_count == 4:
-        print(f"{nums} - {rank[2]}")
-    elif match_count == 3:
-        print(f"{nums} - {rank[1]}")
-    else:
-        print(f"{nums} - {rank[0]}")
-
-#3,18,19,23,32,45,24 
+    # 결과 출력하기
+    print(f"=== {len(win_nums) + 1}회차 예측된 로또 번호 ===")
+    for nums in predicted_nums:
+        match_count = len(set(nums) & set(lucky_number[:-1]))
+        bonus_match = nums.count(lucky_number[-1])
+        if match_count == 6:
+            print(f"{nums} - {rank[5]}")
+        elif match_count == 5 and bonus_match == 1:
+            print(f"{nums} - {rank[4]}")
+        elif match_count == 5 and bonus_match == 0:
+            print(f"{nums} - {rank[3]}")
+        elif match_count == 4:
+            print(f"{nums} - {rank[2]}")
+        elif match_count == 3:
+            print(f"{nums} - {rank[1]}")
+        else:
+            print(f"{nums} - {rank[0]}")
