@@ -125,3 +125,5 @@ while True:
             print(f"{nums} - {rank[1]}")
         else:
             print(f"{nums} - {rank[0]}")
+
+
