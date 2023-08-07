@@ -1,6 +1,11 @@
 from playwright.sync_api import Playwright, sync_playwright
 import time
 
+import os
+
+USER_ID = os.environ['USER_ID']
+USER_PW = os.environ['USER_PW']
+
 # 동행복권 아이디와 패스워드를 설정
 #USER_ID = '<아이디>' # 수정1
 #USER_PW = '<비밀번호>' #수정2
