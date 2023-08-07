@@ -42,3 +42,6 @@ jobs:
     - name: Run!      
       run: |        
         python ./buy_lotto.py
+      env: 
+        USER_ID: ${{ secrets.USER_ID }}
+        USER_PW: ${{ secrets.USER_PW }}
