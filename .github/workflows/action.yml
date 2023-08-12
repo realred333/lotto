@@ -45,3 +45,4 @@ jobs:
       env: 
         USER_ID: ${{ secrets.USER_ID }}
         USER_PW: ${{ secrets.USER_PW }}
+        TELE_TOKEN: ${{ secrets.TELE_TOKEN }}
