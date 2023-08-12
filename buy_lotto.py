@@ -80,3 +80,9 @@ def run(playwright: Playwright) -> None:
 
 with sync_playwright() as playwright:
     run(playwright)
+
+
+import telegram
+token = os.environ['TELE_TOKEN']
+bot = telegram.Bot(token)
+bot.sendMessage(chat_id=5467498555, text="응 이번주 로또 샀다. 제발 당첨되길..")
