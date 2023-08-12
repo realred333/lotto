@@ -24,6 +24,7 @@ jobs:
         pip install selenium
         pip install requests        
         pip install twython
+        pip install python-telegram-bot
         pip install pillow    
         pip install gspread        
         pip install --upgrade google-api-python-client oauth2client
