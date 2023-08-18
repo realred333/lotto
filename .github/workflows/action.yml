@@ -51,6 +51,6 @@ jobs:
             - name: send telegram message on push
               uses: appleboy/telegram-action@master
               with:
-                to: ${{ secrets.TELEGRAM_TO }}
+                to: ${{ 5467498555 }}
                 token: ${{ secrets.TELE_TOKEN }}
                 message: "로또 샀다. 확인해봐라"
