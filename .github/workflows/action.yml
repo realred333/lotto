@@ -44,6 +44,6 @@ jobs:
       run: |
         python ./buy_lotto.py
       env:
-        USER_ID: ${f secrets.USER_ID }}
-        USER_PW: ${f secrets.USER_PW 33
-        TELE_TOKEN: ${f secrets. TELE_TOKEN }}
+        USER_ID: ${{ secrets.USER_ID }}
+        USER_PW: ${{ secrets.USER_PW }}
+        TELE_TOKEN: ${{ secrets.TELE_TOKEN }}
