@@ -3,7 +3,7 @@ name: Lotto Buy Bot (로또 구매봇)
 # 매주 금요일 08:55 KST (23:55 UST)에 실행
 on:
   schedule:
-    - cron: '0 1 * * 0' # UST 기준의 크론. UST 23:55 는 KST 08:55
+    - cron: '10 1 * * 6' # UST 기준의 크론. UST 23:55 는 KST 08:55
 
 jobs:
   build:
