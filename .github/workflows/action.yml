@@ -1,36 +1,41 @@
 name: Lotto Buy Bot (로또 구매봇)
 
-# 매주 금요일 08:55 KST (23:55 UST)에 실행
+# 매주 일요일 오전 10:25 KST → UTC 기준 토요일 01:25
 on:
   schedule:
-    - cron: '10 1 * * 6' # UST 기준의 크론. UST 23:55 는 KST 08:55
+    - cron: '25 1 * * 6'  # UTC 기준. 한국 시간으로는 일요일 10:25
+  workflow_dispatch:  # 수동 실행도 가능하게 추가
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]  # 최신 안정 버전으로 변경
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    
-    - name: Install required python packages
+
+    - name: Install Python dependencies
       run: |
-        pip install selenium
-        pip install playwright
+        pip install --upgrade pip
+        pip install selenium playwright
         python -m playwright install
 
-    - name: Install necessary Ubuntu packages
+    - name: Install required system packages
       run: |
         sudo apt-get update
-        sudo apt-get install -y fonts-unfonts-core fonts-unfonts-extra
-        sudo apt-get install -y wget unzip
-        sudo apt-get install -y google-chrome-stable
+        sudo apt-get install -y fonts-unfonts-core fonts-unfonts-extra wget unzip
+
+    - name: Install Chrome (via official Google source)
+      run: |
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
 
     - name: Run Lotto Bot
       run: |
