@@ -1,7 +1,7 @@
 from playwright.sync_api import Playwright, sync_playwright
 import time
 import os
-import telegram
+from telegram import Bot
 
 USER_ID = os.environ['USER_ID']
 USER_PW = os.environ['USER_PW']
@@ -47,8 +47,11 @@ def run(playwright: Playwright) -> None:
 
     # 텔레그램 알림
     token = os.environ['TELE_TOKEN']
-    bot = telegram.Bot(token)
-    bot.sendMessage(chat_id=5467498555, text="응 이번주 로또 샀다. 제발 당첨되길..")
+    chat_id = 5467498555
+
+    bot = Bot(token=token)
+    bot.send_message(chat_id=chat_id, text="✅ 로또 구매 알림!")
+
 
 with sync_playwright() as playwright:
     run(playwright)
