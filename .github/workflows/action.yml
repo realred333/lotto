@@ -1,9 +1,9 @@
 name: Lotto Buy Bot (로또 구매봇)
 
-# 매주 일요일 오전 10:25 KST → UTC 기준 토요일 01:25
+# 매주 토요일 오전 7:00 KST → UTC 기준 금요일 22:00
 on:
   schedule:
-    - cron: '25 1 * * 6'  # UTC 기준. 한국 시간으로는 일요일 10:25
+    - cron: '0 22 * * 5'  # UTC 기준. 한국 시간으로는 토요일 07:00
   workflow_dispatch:  # 수동 실행도 가능하게 추가
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.11]  # 최신 안정 버전으로 변경
+        python-version: [3.11]
 
     steps:
     - uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         pip install --upgrade pip
-        pip install selenium playwright
+        pip install selenium playwright python-telegram-bot
         python -m playwright install
 
     - name: Install required system packages
