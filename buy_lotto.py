@@ -21,7 +21,7 @@ def run(playwright: Playwright) -> None:
     with page.expect_navigation():
         page.press("form[name='jform'] >> text=로그인", "Enter")
     
-    page.wait_for_selector("#lottoGame")  # 게임 페이지 확인
+    #page.wait_for_selector("#lottoGame")  # 게임 페이지 확인
 
     # 로또 게임 페이지로 이동
     page.goto("https://ol.dhlottery.co.kr/olotto/game/game645.do")
