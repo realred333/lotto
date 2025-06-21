@@ -44,3 +44,15 @@ jobs:
         USER_ID: ${{ secrets.USER_ID }}
         USER_PW: ${{ secrets.USER_PW }}
         TELE_TOKEN: ${{ secrets.TELE_TOKEN }}
+
+name: Keep Active
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # 매달 1일 자정
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Keeping this repo alive"
